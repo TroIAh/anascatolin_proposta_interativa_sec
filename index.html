@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Executiva - Análise Estrutural</title>
+    <!-- Carregamento do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configuração de fonte para Inter */
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Estilos personalizados para cards e seções */
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .highlight {
+            background-color: #e0f2fe; /* light blue */
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            color: #0369a1; /* deep blue */
+        }
+        /* Estilo para a tabela */
+        .component-table th, .component-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+        }
+        .component-table th {
+            background-color: #f9fafb; /* gray-50 */
+            font-weight: 700;
+            color: #1f2937; /* gray-800 */
+        }
+        /* Cor de fundo principal mais suave */
+        body {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Alert Box (Substituto de alert()) -->
+    <div id="custom-alert" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full">
+            <h3 class="text-xl font-bold text-red-600 mb-4">Atenção!</h3>
+            <p id="alert-message" class="text-gray-700 mb-6">Mensagem de erro aqui.</p>
+            <button onclick="hideAlert()" 
+                    class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded-lg transition duration-300">
+                Entendi
+            </button>
+        </div>
+    </div>
+    <!-- FIM Custom Alert Box -->
+
+    <!-- Cabeçalho (Header) -->
+    <header class="bg-blue-800 text-white py-8 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-2">
+                <span class="block">Proposta Executiva - Análise Estrutural<br> Convenção Sinergia 2026 </span>
+            </h1>
+            <p class="text-xl opacity-80">
+                Ana Scatolin - Assessoria de Inteligência Organizacional -  Validade 15 dias
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Seção 1: O Ponto de Corte (Site Completo vs. Sistema) -->
+        <section id="ponto-corte" class="mb-16">
+            <div class="section-card bg-white border-t-4 border-blue-500">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    🎯 Sistema Essencial vs. Site & Sistema
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    O ponto crucial que separa o **"Site Completo"** do **"Sistema Essencial"** é a extensão da entrega:
+                    <ul class="mt-4 list-disc pl-5 space-y-2 text-gray-700">
+                        <li>O **Site Completo** entrega todas as informações do evento (programa, palestrantes, links personalizados) em um único local.</li>
+                        <li>O **Sistema Essencial** foca no link de inscrição simples, na autogestão e logística crítica de inscrições e hospedagem.</li>
+                    </ul>
+                </p>
+
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 mt-6">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-3">Ambas Opções Precisam Resolver:</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                        <li>A dor crítica das 37 cooperativas realizando trocas de participantes.</li>
+                        <li>O **Gerenciamento de Hospedagem** (alocação complexa de apartamentos).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Opção 1 - Sistema Essencial (Meio Termo) -->
+        <section id="meio-termo" class="mb-16">
+            <div class="section-card bg-blue-50 border-t-4 border-blue-600">
+                <h2 class="text-3xl font-bold text-blue-800 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.008 12.008 0 002 15c0 3.737 2.138 6.83 5.232 9.006C9.275 23.639 12 24 12 24s2.725-.361 4.768-1.994C19.862 21.83 22 18.737 22 15a12.008 12.008 0 00-2.382-10.016z" />
+                    </svg>
+                    1. Sistema Essencial
+                </h2>
+                <p class="text-xl text-blue-700 font-semibold mb-6">
+                    É o <span class="highlight bg-blue-200 text-blue-800">mínimo viável</span> para transformar o **Esforço Manual** em **Previsibilidade Logística**. Foco apenas nos módulos críticos de gestão.
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full component-table rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="w-1/4">Componente da Solução</th>
+                                <th class="w-1/4">Requisito Atendido</th>
+                                <th class="w-1/2">Justificativa Baseada no Foco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium text-blue-800">Módulo de Inscrições e Área do Inscrito</td>
+                                <td>Troca de participantes pela cooperativa ou inscrito.</td>
+                                <td>**ESSENCIAL** para a autogestão de grupos e acompanhamento de status.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-blue-800">Módulo de Cooperativas</td>
+                                <td>Gestão de Limites e Cadastro Delegado de Participantes.</td>
+                                <td>**MÓDULO CHAVE** que permite o controle de vagas por cooperativa e coleta de dados personalizados (tamanho de camiseta, dieta, etc.).</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-blue-800">Controle de Alojamentos/Hospedagem</td>
+                                <td>Gerenciamento de hospedagem em apartamentos.</td>
+                                <td>**VITAL** para a logística específica do evento e perguntas personalizadas.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-blue-800">Módulos de Relatórios e Admin.</td>
+                                <td>Controle (números, gráficos) e Auditoria (logs diversos usários).</td>
+                                <td>Garante **SEGURANÇA** e capacidade de recuperação, além do painel de controle.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-blue-800">Emissão de Certificados</td>
+                                <td>Documentação pós-evento.</td>
+                                <td>Emissão automática de PDFs na área do inscrito, liberando a equipe da **tarefa manual**.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-blue-800">Assessoria Pré-evento</td>
+                                <td>Atendimento aos inscritos e auxílio na gestão de hospedagem.</td>
+                                <td>Suporte dedicado para garantir o funcionamento e a correta alocação da logística.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 p-4 bg-blue-100 rounded-lg">
+                    <p class="text-lg font-bold text-blue-800">
+                        🔑 Foco desta Opção: <span class="text-blue-600">Alavancagem de Código</span> para automatizar o trabalho manual.
+                    </p>
+                </div>
+                
+                <!-- BLOCO DE PREÇO - OPÇÃO 1 -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Condição Normal (1 Evento) -->
+                    <div class="p-6 bg-gray-100 rounded-xl text-center border-2 border-gray-400">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Condição Normal (1 Evento)</h3>
+                        <p class="text-3xl font-extrabold text-gray-700">R$ 13.200</p>
+                    </div>
+                    <!-- Condição Especial (2+ Eventos) -->
+                    <div class="p-6 bg-blue-200 rounded-xl text-center border-2 border-blue-400">
+                        <h3 class="text-xl font-bold text-blue-900 mb-1">Condição Especial (2+ Eventos Programados)</h3>
+                        <p class="text-4xl font-extrabold text-blue-900" data-price="12100">R$ 12.100</p>
+                    </div>
+                </div>
+                <p class="text-sm text-blue-700 mt-4 text-center">Valores de licenciamento e serviço inclusos. Consulte a forma de pagamento.</p>
+                <!-- FIM BLOCO DE PREÇO -->
+            </div>
+        </section>
+
+        <!-- Seção 3: Opção 2 - Sistema Completo (Com Site) -->
+        <section id="sistema-completo" class="mb-16">
+            <div class="section-card bg-green-50 border-t-4 border-green-600">
+                <h2 class="text-3xl font-bold text-green-800 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                    2. Site & Sistema
+                </h2>
+                <p class="text-xl text-green-700 font-semibold mb-6">
+                    Esta opção tem como objetivo <span class="highlight bg-green-200 text-green-800">fornecer um site completo</span>, garantindo que os cooperados acessem todas as informações do evento num único local e maximizando a autonomia.
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full component-table rounded-xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th colspan="3" class="text-center bg-green-100 text-green-800 font-extrabold">INCLUI TODOS OS ITENS DA OPÇÃO 1 (SISTEMA ESSENCIAL)</th>
+                            </tr>
+                            <tr>
+                                <th class="w-1/4">Componente Adicional / Otimização</th>
+                                <th class="w-1/4">Requisito Atendido</th>
+                                <th class="w-1/2">Justificativa Baseada no Foco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium text-green-800">Website Institucional (Responsivo)</td>
+                                <td>Comunicação e informação sobre o evento.</td>
+                                <td>Inclui notícias, vídeos e **Layout Responsivo**, centralizando todas as informações do evento.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-green-800">Serviço Adicional: Montagem da Programação</td>
+                                <td>Controle logístico completo.</td>
+                                <td>Realiza o **Controle de Colisão de Horário**, eliminando erros de alocação de agenda.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-green-800">Consultoria Estratégica Ampliada</td>
+                                <td>Auxílio na tomada de decisões.</td>
+                                <td>Atuação que **"vai além do website"** (<strong class="text-orange-600">21 anos</strong> de experiência) transformando o suporte em **ativo de Capital**.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium text-green-800">Serviço Adicional: Questões de Acessibilidade</td>
+                                <td>Personalização do formulário.</td>
+                                <td>Refina o formulário com identificação de **deficiência ou necessidades especiais**.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 p-4 bg-green-100 rounded-lg">
+                    <p class="text-lg font-bold text-green-800">
+                        💡 Foco desta Opção: <span class="text-green-600">Alavancagem de Colaboração e Código</span> para maximizar **Capital e Tempo**.
+                    </p>
+                </div>
+                <!-- BLOCO DE PREÇO - OPÇÃO 2 -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Condição Normal (1 Evento) -->
+                    <div class="p-6 bg-gray-100 rounded-xl text-center border-2 border-gray-400">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Condição Normal (1 Evento)</h3>
+                        <p class="text-3xl font-extrabold text-gray-700">R$ 17.570</p>
+                    </div>
+                    <!-- Condição Especial (2+ Eventos) -->
+                    <div class="p-6 bg-green-200 rounded-xl text-center border-2 border-green-400">
+                        <h3 class="text-xl font-bold text-green-900 mb-1">Condição Especial (2+ Eventos Programados)</h3>
+                        <p class="text-4xl font-extrabold text-green-900" data-price="16320">R$ 16.320</p>
+                    </div>
+                </div>
+                <p class="text-sm text-green-700 mt-4 text-center">Valores de licenciamento e serviço inclusos. Consulte forma de pagamento.</p>
+                <!-- FIM BLOCO DE PREÇO -->
+            </div>
+        </section>
+
+        <!-- Seção 4: Assistente de Atendimento com I.A. (Antes da Calculadora) -->
+        <section id="assistente-ia" class="mb-16">
+            <div class="section-card bg-white border-t-4 border-purple-500">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3m-6.49-4.88c0-1.87 1.5-3.37 3.37-3.37s3.37 1.5 3.37 3.37m-2.25 0a.75.75 0 01-1.5 0M10.5 18H9a2 2 0 00-2 2v2h10v-2a2 2 0 00-2-2h-1.5" />
+                    </svg>
+                    ✨ Assistente de Atendimento com Motor de Inteligência Artificial
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    A inclusão de um assistente virtual treinado com o conteúdo do evento e as FAQs específicas da Sinergia 2026 garante suporte 24/7 e reduz a carga de trabalho da equipe de organização.
+                </p>
+
+                <!-- Preços IA -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Condição Normal (1 Evento) -->
+                    <div class="p-6 bg-gray-100 rounded-xl text-center border-2 border-gray-400">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Condição Normal (1 Evento)</h3>
+                        <p class="text-3xl font-extrabold text-gray-700">R$ 6.200</p>
+                    </div>
+                    <!-- Condição Especial (2+ Eventos) -->
+                    <div class="p-6 bg-purple-200 rounded-xl text-center border-2 border-purple-400">
+                        <h3 class="text-xl font-bold text-purple-900 mb-1">Condição Especial (2+ Eventos Programados)</h3>
+                        <p class="text-4xl font-extrabold text-purple-900" data-price="5650">R$ 5.650</p> 
+                    </div>
+                </div>
+                <p class="text-sm text-purple-700 mt-4 text-center">Inclui motor de I.A., treinamento inicial e 1 atualização de conteúdo por mês.</p>
+                <!-- FIM BLOCO DE PREÇO -->
+
+                <!-- Navegação para as opções do sistema, como era na seção de conclusão original -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200">
+                    <a href="#meio-termo" class="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300">
+                        Voltar para Opção Essencial (Sistema)
+                    </a>
+                    <a href="#sistema-completo" class="flex-1 text-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300">
+                        Voltar para Opção Completa (Site + Sistema)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: CALCULADORA DE PROPOSTA PERSONALIZADA (Última Seção) -->
+        <section id="calculadora-proposta" class="mb-16">
+            <div class="section-card bg-yellow-50 border-t-4 border-yellow-500">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2v10H9V10c0-1.105 1.343-2 3-2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h2a2 2 0 012 2v2a2 2 0 01-2 2h-2m-4-8v8m0 0v2" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10a4 4 0 00-4 4v2a2 2 0 002 2h4a2 2 0 002-2v-2a4 4 0 00-4-4z" />
+                    </svg>
+                    💰 Calcule Sua Proposta Personalizada
+                </h2>
+                <p class="text-lg text-gray-700 mb-8">
+                    Selecione a base da sua solução (Normal ou Especial) e o adicional de I.A. para obter o valor final.
+                </p>
+
+                <!-- Seleção da Opção Principal (Radio Buttons) -->
+                <div class="mb-8 p-6 bg-white border border-yellow-200 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">1. Escolha a Base do Sistema: <span class="text-red-500 text-sm">(Apenas uma opção)</span></h3>
+                    
+                    <!-- Opção 1: Essencial - Normal -->
+                    <label class="flex items-center p-3 mb-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-150 border-2 border-transparent has-[:checked]:border-gray-500">
+                        <input type="radio" name="main_option" value="13200" id="opt_essencial_normal" class="form-radio h-5 w-5 text-gray-600 focus:ring-gray-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-gray-800">Essencial (1 Evento - Condição Normal)</span>
+                        <span class="ml-auto text-xl font-bold text-gray-600">R$ 13.200</span>
+                    </label>
+
+                    <!-- Opção 1: Essencial - Especial -->
+                    <label class="flex items-center p-3 mb-3 bg-blue-50 rounded-lg cursor-pointer hover:bg-blue-100 transition duration-150 border-2 border-transparent has-[:checked]:border-blue-500">
+                        <input type="radio" name="main_option" value="12100" id="opt_essencial_especial" class="form-radio h-5 w-5 text-blue-600 focus:ring-blue-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-blue-800">Essencial (2+ Eventos - Condição Especial)</span>
+                        <span class="ml-auto text-xl font-bold text-blue-600">R$ 12.100</span>
+                    </label>
+
+                    <!-- Opção 2: Completo - Normal -->
+                    <label class="flex items-center p-3 mb-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-150 border-2 border-transparent has-[:checked]:border-gray-500">
+                        <input type="radio" name="main_option" value="17570" id="opt_completo_normal" class="form-radio h-5 w-5 text-gray-600 focus:ring-gray-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-gray-800">Completo (1 Evento - Condição Normal)</span>
+                        <span class="ml-auto text-xl font-bold text-gray-600">R$ 17.570</span>
+                    </label>
+                    
+                    <!-- Opção 2: Completo - Especial -->
+                    <label class="flex items-center p-3 bg-green-50 rounded-lg cursor-pointer hover:bg-green-100 transition duration-150 border-2 border-transparent has-[:checked]:border-green-500">
+                        <input type="radio" name="main_option" value="16320" id="opt_completo_especial" class="form-radio h-5 w-5 text-green-600 focus:ring-green-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-green-800">Completo (2+ Eventos - Condição Especial)</span>
+                        <span class="ml-auto text-xl font-bold text-green-600">R$ 16.320</span>
+                    </label>
+                </div>
+
+                <!-- Seleção do Adicional (Radio Buttons) -->
+                <div class="mb-8 p-6 bg-white border border-yellow-200 rounded-xl shadow-md">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">2. Adicional Opcional (Assistente I.A.):</h3>
+                    
+                    <!-- Não Incluir I.A. -->
+                    <label class="flex items-center p-3 mb-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-150 border-2 border-transparent has-[:checked]:border-gray-500">
+                        <input type="radio" name="ia_option" value="0" id="opt_ia_none" class="form-radio h-5 w-5 text-gray-600 rounded focus:ring-gray-500" checked onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-gray-800">Não Incluir Assistente de I.A.</span>
+                        <span class="ml-auto text-xl font-bold text-gray-600">R$ 0,00</span>
+                    </label>
+
+                    <!-- I.A. Condição Normal -->
+                    <label class="flex items-center p-3 mb-3 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-150 border-2 border-transparent has-[:checked]:border-gray-500">
+                        <input type="radio" name="ia_option" value="6200" id="opt_ia_normal" class="form-radio h-5 w-5 text-gray-600 rounded focus:ring-gray-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-gray-800">I.A. (1 Evento - Condição Normal)</span>
+                        <span class="ml-auto text-xl font-bold text-gray-600">R$ 6.200</span>
+                    </label>
+                    
+                    <!-- I.A. Condição Especial -->
+                    <label class="flex items-center p-3 bg-purple-50 rounded-lg cursor-pointer hover:bg-purple-100 transition duration-150 border-2 border-transparent has-[:checked]:border-purple-500">
+                        <input type="radio" name="ia_option" value="5650" id="opt_ia_especial" class="form-radio h-5 w-5 text-purple-600 rounded focus:ring-purple-500" onchange="calculateTotal()">
+                        <span class="ml-4 text-lg font-semibold text-purple-800">I.A. (2+ Eventos - Condição Especial)</span>
+                        <span class="ml-auto text-xl font-bold text-purple-600">R$ 5.650</span>
+                    </label>
+                </div>
+
+                <!-- Resultado do Cálculo -->
+                <div class="p-8 bg-yellow-200 rounded-xl text-center border-4 border-yellow-600 shadow-xl">
+                    <h3 class="text-2xl font-bold text-yellow-900 mb-2">Valor Total da Proposta Personalizada:</h3>
+                    <p class="text-6xl font-extrabold text-yellow-800">
+                        <span id="total_price">R$ 0,00</span>
+                    </p>
+                    <p class="text-sm text-yellow-700 mt-3">Os valores incluem licenciamento e serviço conforme as opções selecionadas.</p>
+                </div>
+
+            </div>
+        </section>
+        <!-- FIM CALCULADORA -->
+
+        <!-- Seção 6: CTA - Formalizar Proposta -->
+        <section id="cta" class="mb-16">
+            <div class="section-card bg-blue-900 text-white text-center">
+                <h2 class="text-3xl font-extrabold mb-4">Próxima Etapa: Formalizar o Pedido</h2>
+                <p class="text-xl opacity-90 mb-8">
+                    Clique no botão abaixo para enviar sua seleção e o valor total diretamente para a Ana Scatolin via WhatsApp.
+                </p>
+
+                <button onclick="sendWhatsApp()"
+                        class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-xl font-bold rounded-xl shadow-2xl text-blue-900 bg-yellow-400 hover:bg-yellow-300 transition duration-300 transform hover:scale-105 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z" />
+                    </svg>
+                    ENVIAR PROPOSTA VIA WHATSAPP
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center opacity-75">
+            <p>&copy; 2026 Análise Estrutural da Proposta. Conteúdo otimizado para fácil visualização.</p>
+        </div>
+    </footer>
+
+    <!-- Script para Cálculo e Envio WhatsApp -->
+    <script>
+        const WHATSAPP_NUMBER = "554899129069";
+
+        // Função para formatar o número como moeda BRL
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                minimumFractionDigits: 2
+            }).format(amount);
+        }
+
+        // Função para exibir o alerta personalizado
+        function showAlert(message) {
+            document.getElementById('alert-message').textContent = message;
+            document.getElementById('custom-alert').classList.remove('hidden');
+            document.getElementById('custom-alert').classList.add('flex');
+        }
+
+        // Função para esconder o alerta personalizado
+        function hideAlert() {
+            document.getElementById('custom-alert').classList.add('hidden');
+            document.getElementById('custom-alert').classList.remove('flex');
+        }
+
+        // Função que calcula e coleta as opções selecionadas
+        function getSelectedOptions() {
+            let baseText = "Nenhuma opção base selecionada.";
+            let iaText = "I.A. não incluída.";
+            let total = 0;
+
+            // 1. Base Option
+            const mainOption = document.querySelector('input[name="main_option"]:checked');
+            if (mainOption) {
+                total += parseInt(mainOption.value);
+                // Pega o texto da label (ex: Essencial (1 Evento - Condição Normal))
+                const labelElement = mainOption.closest('label').querySelector('span:first-of-type');
+                const priceElement = mainOption.closest('label').querySelector('span:last-of-type');
+                if (labelElement && priceElement) {
+                    baseText = `${labelElement.textContent.trim()} (${priceElement.textContent.trim()})`;
+                }
+            }
+
+            // 2. I.A. Option (só se o valor for diferente de 0)
+            const iaOption = document.querySelector('input[name="ia_option"]:checked');
+            if (iaOption && iaOption.value !== "0") {
+                total += parseInt(iaOption.value);
+                const labelElement = iaOption.closest('label').querySelector('span:first-of-type');
+                const priceElement = iaOption.closest('label').querySelector('span:last-of-type');
+                if (labelElement && priceElement) {
+                    iaText = `${labelElement.textContent.trim()} (${priceElement.textContent.trim()})`;
+                }
+            }
+            
+            const totalPriceFormatted = formatCurrency(total);
+            
+            return { baseText, iaText, totalPriceFormatted, totalValue: total };
+        }
+
+        // Função principal de cálculo (apenas atualiza o display)
+        function calculateTotal() {
+            const { totalPriceFormatted } = getSelectedOptions();
+            document.getElementById('total_price').textContent = totalPriceFormatted;
+        }
+
+        // Função para enviar mensagem via WhatsApp
+        function sendWhatsApp() {
+            const { baseText, iaText, totalPriceFormatted, totalValue } = getSelectedOptions();
+
+            // Validação
+            if (totalValue === 0 || baseText === "Nenhuma opção base selecionada.") {
+                showAlert("Por favor, selecione pelo menos uma opção base do sistema (Essencial ou Completo) antes de formalizar a proposta.");
+                return;
+            }
+
+            const initialMessage = "Olá Ana, gostaria de formalizar a proposta da Convenção Sinergia 2026 com as seguintes escolhas:";
+            const selectionDetails = `\n\n1. BASE DO SISTEMA: ${baseText}\n2. ADICIONAL I.A.: ${iaText}\n\nVALOR TOTAL: ${totalPriceFormatted}\n\nFavor dar seguimento para o fechamento da proposta.`;
+            
+            const fullMessage = initialMessage + selectionDetails;
+            const encodedMessage = encodeURIComponent(fullMessage);
+            
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Chamada inicial para garantir que o preço inicie em R$ 0,00
+        document.addEventListener('DOMContentLoaded', calculateTotal);
+    </script>
+
+</body>
+</html>
